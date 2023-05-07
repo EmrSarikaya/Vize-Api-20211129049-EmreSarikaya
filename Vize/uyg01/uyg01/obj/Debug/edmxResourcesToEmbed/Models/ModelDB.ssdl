@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB01Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Ilan">
+    <Key>
+      <PropertyRef Name="ilanId" />
+    </Key>
+    <Property Name="ilanId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ilanAd" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ilanFiyat" Type="money" Nullable="false" />
+    <Property Name="ilanFoto" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Kategori">
+    <Key>
+      <PropertyRef Name="kategoriId" />
+    </Key>
+    <Property Name="kategoriId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="kategoriAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Kayit">
+    <Key>
+      <PropertyRef Name="kayitId" />
+    </Key>
+    <Property Name="kayitId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="kayitKategoriId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="kayitIlanId" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Kayit_ToIlan">
+    <End Role="Ilan" Type="Self.Ilan" Multiplicity="1" />
+    <End Role="Kayit" Type="Self.Kayit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ilan">
+        <PropertyRef Name="ilanId" />
+      </Principal>
+      <Dependent Role="Kayit">
+        <PropertyRef Name="kayitIlanId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kayit_ToKategori">
+    <End Role="Kategori" Type="Self.Kategori" Multiplicity="1" />
+    <End Role="Kayit" Type="Self.Kayit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kategori">
+        <PropertyRef Name="kategoriId" />
+      </Principal>
+      <Dependent Role="Kayit">
+        <PropertyRef Name="kayitKategoriId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DB01ModelStoreContainer">
+    <EntitySet Name="Ilan" EntityType="Self.Ilan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kategori" EntityType="Self.Kategori" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kayit" EntityType="Self.Kayit" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Kayit_ToIlan" Association="Self.FK_Kayit_ToIlan">
+      <End Role="Ilan" EntitySet="Ilan" />
+      <End Role="Kayit" EntitySet="Kayit" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kayit_ToKategori" Association="Self.FK_Kayit_ToKategori">
+      <End Role="Kategori" EntitySet="Kategori" />
+      <End Role="Kayit" EntitySet="Kayit" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DB01ModelStoreContainer" CdmEntityContainer="DB01Entities">
+    <EntitySetMapping Name="Ilan">
+      <EntityTypeMapping TypeName="DB01Model.Ilan">
+        <MappingFragment StoreEntitySet="Ilan">
+          <ScalarProperty Name="ilanId" ColumnName="ilanId" />
+          <ScalarProperty Name="ilanAd" ColumnName="ilanAd" />
+          <ScalarProperty Name="ilanFiyat" ColumnName="ilanFiyat" />
+          <ScalarProperty Name="ilanFoto" ColumnName="ilanFoto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kategori">
+      <EntityTypeMapping TypeName="DB01Model.Kategori">
+        <MappingFragment StoreEntitySet="Kategori">
+          <ScalarProperty Name="kategoriId" ColumnName="kategoriId" />
+          <ScalarProperty Name="kategoriAdi" ColumnName="kategoriAdi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kayit">
+      <EntityTypeMapping TypeName="DB01Model.Kayit">
+        <MappingFragment StoreEntitySet="Kayit">
+          <ScalarProperty Name="kayitId" ColumnName="kayitId" />
+          <ScalarProperty Name="kayitKategoriId" ColumnName="kayitKategoriId" />
+          <ScalarProperty Name="kayitIlanId" ColumnName="kayitIlanId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
